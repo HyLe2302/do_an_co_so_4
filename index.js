@@ -4,6 +4,8 @@ const bcrypt = require("bcrypt");
 const colllection = require("./config");
 // const { name } = require("ejs");
 // const { send } = require("process");
+const { config } = require("dotenv")
+config()
 
 const app = express();
 //convert data into json format
@@ -20,7 +22,6 @@ app.use(express.static('public'));
 app.use(express.static('js'));
 
 // app.use(express.static(pasth.join(__dirname, "js")));
-
 
 
 app.get("/",(req, res) => {
@@ -61,7 +62,7 @@ app.post("/signup", async (req, res) => {
             res.status(200).send(`
                 <script>
                     alert('Đăng ký thành công!');
-                    window.location.href = '/';
+                    window.location.href = '/';node
                 </script>
             `);
         }
@@ -90,11 +91,11 @@ app.post("/login", async (req, res) => {
             res.send("Mật khẩu không đúng")
         }
     }catch{
-        res.send("wrong")
+        res.send("wrong")   
     }
 });
 
-const port = 5000;
+const port = process.env.PORT || 5502;
 app.listen(port, () =>{
     console.log(`Server running on port: ${port}`);
 })
