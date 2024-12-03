@@ -2,7 +2,7 @@
 const { config } = require("dotenv")
 const mongoose = require("mongoose");
 config()
-const connect = mongoose.connect(`${process.env.MONGO_URI}/${process.env.DB_NAME}`);
+const connect = mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@webrtcapp.vinf7.mongodb.net/${process.env.DB_NAME}`);
 
 connect.then(() => {
     console.log("Kết nối thành công")
