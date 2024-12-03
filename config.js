@@ -1,12 +1,14 @@
 // const { name } = require("ejs");
+const { config } = require("dotenv")
 const mongoose = require("mongoose");
-const connect = mongoose.connect("mongodb://localhost:27017/login");
+config()
+const connect = mongoose.connect(`${process.env.MONGO_URI}/${process.env.DB_NAME}`);
 
 connect.then(() => {
     console.log("Kết nối thành công")
 })
-.catch(() => {
-    console.log("Kết nối thất bại")
+.catch((error) => {
+    console.log("Kết nối thất bại", error)
 });
 
 const LoginSchema = new mongoose.Schema({
